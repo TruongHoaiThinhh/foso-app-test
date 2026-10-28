@@ -13,6 +13,7 @@ import {
 import { CartProvider } from '@/state/cart';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
+SplashScreen.setOptions({ duration: 300, fade: true });
 
 export default function RootLayout() {
   const [loaded] = useFonts({

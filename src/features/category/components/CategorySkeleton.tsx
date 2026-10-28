@@ -15,7 +15,7 @@ export function CategorySkeleton() {
       <View style={styles.content}>
         <Skeleton style={styles.title} />
         <View style={styles.grid}>
-          {Array.from({ length: 6 }, (_, index) => (
+          {Array.from({ length: 9 }, (_, index) => (
             <Skeleton key={index} style={styles.cell} />
           ))}
         </View>

@@ -11,6 +11,8 @@ import { colors, radius, spacing, typography } from '@/theme';
 
 type Slide = (typeof bannerSlides)[number];
 
+const BANNER_RATIO = 369 / 176;
+
 export function BannerCarousel() {
   const listRef = useRef<FlatList<Slide>>(null);
   const reduced = useReducedMotion();
@@ -66,7 +68,7 @@ export function BannerCarousel() {
           onMomentumScrollEnd={onEnd}
           accessibilityLabel="Banner khuyến mãi"
           renderItem={({ item }) => (
-            <View style={{ width, height: 170 }}>
+            <View style={{ width, height: width / BANNER_RATIO }}>
               {item.kind === 'image' ? (
                 <AppImage source={item.image} contentFit="cover" containerStyle={styles.image} />
               ) : (
@@ -96,15 +98,15 @@ export function BannerCarousel() {
 
 const styles = StyleSheet.create({
   placeholder: {
-    height: 170,
+    aspectRatio: BANNER_RATIO,
   },
   image: {
     width: '100%',
-    height: 170,
+    height: '100%',
     borderRadius: radius.sm,
   },
   promo: {
-    height: 170,
+    height: '100%',
     borderRadius: radius.sm,
     flexDirection: 'row',
     alignItems: 'center',

@@ -163,7 +163,17 @@ export const articles: Article[] = [
   },
 ];
 
-const subNames = ['Bộ lọc gió', 'Bộ lọc trong cabin', 'Bộ lọc nhiên liệu', 'Bộ lọc gió', 'Bộ lọc gió', 'Bộ lọc gió'];
+const subNames = [
+  'Bộ lọc gió',
+  'Bộ lọc trong cabin',
+  'Bộ lọc nhiên liệu',
+  'Bộ lọc gió',
+  'Bộ lọc gió',
+  'Bộ lọc gió',
+  'Bộ lọc gió',
+  'Bộ lọc gió',
+  'Bộ lọc gió',
+];
 const subImages = [
   images.oilYellow,
   images.oilWhite,

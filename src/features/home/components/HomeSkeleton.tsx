@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     padding: 12,
     gap: 16,
   },
-  banner: { height: 65, borderRadius: radius.md },
+  banner: { aspectRatio: 369 / 66, borderRadius: radius.md },
   title: { width: 180, height: 24 },
   row: { flexDirection: 'row', gap: 8 },
   chip: { width: 79, height: 98 },
-  carousel: { height: 170 },
+  carousel: { aspectRatio: 369 / 176 },
   block: { height: 220 },
 });

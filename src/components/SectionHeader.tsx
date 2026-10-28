@@ -7,7 +7,14 @@ import { AppText } from '@/components/ui/AppText';
 import { PressableScale } from '@/components/ui/PressableScale';
 import { colors, spacing, typography } from '@/theme';
 
-type Tone = 'default' | 'onDark' | 'link';
+type Tone = 'default' | 'onDark' | 'link' | 'danger';
+
+const linkColors: Record<Tone, string> = {
+  default: colors.text.muted,
+  onDark: colors.white,
+  link: colors.brand[500],
+  danger: colors.error.dark,
+};
 type Mark = keyof typeof marks;
 
 const marks = {
@@ -46,13 +53,14 @@ function Title({ mark, children }: { mark?: Mark; children: string }) {
 type SeeAllProps = {
   onPress: () => void;
   accessibilityLabel: string;
+  label?: string;
+  tone?: Tone;
   style?: StyleProp<ViewStyle>;
 };
 
-function SeeAll({ onPress, accessibilityLabel, style }: SeeAllProps) {
-  const tone = useContext(ToneContext);
-  const color =
-    tone === 'onDark' ? colors.white : tone === 'link' ? colors.brand[500] : colors.text.muted;
+function SeeAll({ onPress, accessibilityLabel, label = 'Xem tất cả', tone, style }: SeeAllProps) {
+  const contextTone = useContext(ToneContext);
+  const color = linkColors[tone ?? contextTone];
   return (
     <PressableScale
       onPress={onPress}
@@ -61,7 +69,7 @@ function SeeAll({ onPress, accessibilityLabel, style }: SeeAllProps) {
       style={style}
     >
       <View style={styles.link}>
-        <AppText style={[styles.linkText, { color }]}>Xem tất cả</AppText>
+        <AppText style={[styles.linkText, { color }]}>{label}</AppText>
         <ChevronRight color={color} size={14} strokeWidth={2} />
       </View>
     </PressableScale>

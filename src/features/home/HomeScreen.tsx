@@ -112,7 +112,6 @@ export default function HomeScreen() {
               <HighlightBanner
                 source={images.coupon}
                 label="Mã giảm giá NGUOIMOI, giảm 35%"
-                contentFit="contain"
                 style={styles.coupon}
               />
             </Animated.View>
@@ -144,6 +143,7 @@ export default function HomeScreen() {
               <SectionHeader.SeeAll
                 onPress={() => openCategory()}
                 accessibilityLabel="Xem tất cả Flash Sale"
+                tone="danger"
                 style={styles.pushRight}
               />
             </FlashSale.Header>
@@ -231,8 +231,13 @@ export default function HomeScreen() {
           </Animated.View>
 
           <Animated.View entering={enter(380)} style={styles.block}>
-            <SectionHeader>
+            <SectionHeader tone="link">
               <SectionHeader.Title mark="news">Bài Viết Nổi Bật</SectionHeader.Title>
+              <SectionHeader.SeeAll
+                label="Xem thêm"
+                onPress={openNews}
+                accessibilityLabel="Xem thêm bài viết"
+              />
             </SectionHeader>
             <View style={styles.articles}>
               {articles.map((article) => (
@@ -265,6 +270,7 @@ export default function HomeScreen() {
   );
 }
 
+const COUPON_RATIO = 369 / 66;
 const HIGHLIGHT_SMALL_RATIO = 177 / 129;
 const HIGHLIGHT_TALL_RATIO = 177 / 270;
 
@@ -295,7 +301,7 @@ const styles = StyleSheet.create({
   },
   coupon: {
     width: '100%',
-    height: 65,
+    aspectRatio: COUPON_RATIO,
     borderRadius: radius.md,
   },
   pushRight: {
